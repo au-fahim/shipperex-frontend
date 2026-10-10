@@ -87,7 +87,7 @@ function ReturnStatus({
           <LoaderCircle size={23} className="spin" />
         )}
       </div>
-      <span className="eyebrow">SHIPPERE X · PAYMENT UPDATE</span>
+      <span className="eyebrow">SHIPPEREX · PAYMENT UPDATE</span>
       <h1>
         {cancelled
           ? "Checkout paused."
