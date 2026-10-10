@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  poweredByHeader: false,
+  images: { remotePatterns: [] },
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
