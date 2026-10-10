@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { ArrowRight, LoaderCircle, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export function TrackingSearch({ compact = false }: { compact?: boolean }) {
   const [trackingNumber, setTrackingNumber] = useState("");
