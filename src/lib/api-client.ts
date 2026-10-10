@@ -22,12 +22,10 @@ export async function apiRequest<T>(
       ...(init?.body ? { "Content-Type": "application/json" } : {}),
     },
   });
-  const result = await response
-    .json()
-    .catch(() => ({
-      success: false,
-      message: "The server returned an unreadable response.",
-    }));
+  const result = await response.json().catch(() => ({
+    success: false,
+    message: "The server returned an unreadable response.",
+  }));
   if (!response.ok || result.success === false)
     throw new ApiRequestError(
       result.message ?? "The request could not be completed.",

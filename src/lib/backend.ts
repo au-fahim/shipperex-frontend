@@ -100,12 +100,10 @@ export async function serverBackend<T>(
       ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
     },
   });
-  const result = await response
-    .json()
-    .catch(() => ({
-      success: false,
-      message: "The API returned an unreadable response.",
-    }));
+  const result = await response.json().catch(() => ({
+    success: false,
+    message: "The API returned an unreadable response.",
+  }));
   if (!response.ok)
     throw new Error(result.message ?? "Could not load data from the API.");
   return result as ApiEnvelope<T>;

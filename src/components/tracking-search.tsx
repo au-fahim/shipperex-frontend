@@ -16,8 +16,16 @@ export function TrackingSearch({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <form className={`tracking-form${compact ? " tracking-form-compact" : ""}`} onSubmit={submit}>
-      <label htmlFor={compact ? "tracking-compact" : "tracking-number"} className="sr-only">Tracking number</label>
+    <form
+      className={`tracking-form${compact ? " tracking-form-compact" : ""}`}
+      onSubmit={submit}
+    >
+      <label
+        htmlFor={compact ? "tracking-compact" : "tracking-number"}
+        className="sr-only"
+      >
+        Tracking number
+      </label>
       <Search size={18} aria-hidden="true" />
       <input
         id={compact ? "tracking-compact" : "tracking-number"}
@@ -27,8 +35,18 @@ export function TrackingSearch({ compact = false }: { compact?: boolean }) {
         autoComplete="off"
         required
       />
-      <button type="submit" className="track-submit focus-ring" aria-label="Track shipment">
-        {compact ? <ArrowRight size={19} /> : <>Track parcel <ArrowRight size={16} /></>}
+      <button
+        type="submit"
+        className="track-submit focus-ring"
+        aria-label="Track shipment"
+      >
+        {compact ? (
+          <ArrowRight size={19} />
+        ) : (
+          <>
+            Track parcel <ArrowRight size={16} />
+          </>
+        )}
       </button>
     </form>
   );
