@@ -4,8 +4,12 @@ import { Providers } from "./providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "ShipperEx — Send with confidence", template: "%s · ShipperEx" },
-  description: "International parcel and document shipping, with clear tracking at every step.",
+  title: {
+    default: "ShipperEx — Send with confidence",
+    template: "%s · ShipperEx",
+  },
+  description:
+    "International parcel and document shipping, with clear tracking at every step.",
   openGraph: {
     title: "ShipperEx — Send with confidence",
     description: "Simple international shipping, from pickup to delivery.",
@@ -13,7 +17,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body>
