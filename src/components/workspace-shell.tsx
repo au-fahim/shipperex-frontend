@@ -150,7 +150,10 @@ export function WorkspaceShell({
     return (
       <main className="workspace-loading">
         <div className="loading-brand">
-          <PackageOpen size={19} /> ShipperEx
+            <span className="brand-mark">
+              <PackageOpen size={18} />
+            </span>
+            ShipperEx
         </div>
         <div className="loading-panel">
           <span />
@@ -250,7 +253,7 @@ export function WorkspaceShell({
               <PackageOpen size={18} />
             </span>
             <span>
-              shipper<span className="brand-dot">ex</span>
+              Shipper<span className="brand-dot">Ex</span>
             </span>
           </Link>
           {/* <div className="workspace-switch">
@@ -331,7 +334,7 @@ export function WorkspaceShell({
               <PackageOpen size={17} />
             </span>
             <span>
-              shipper<span className="brand-dot">ex</span>
+              Shipper<span className="brand-dot">Ex</span>
             </span>
           </Link>
           <div className="crumbs">

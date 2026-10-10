@@ -195,7 +195,7 @@ export function SiteHeader({ sticky = false }: { sticky?: boolean }) {
             <PackageOpen size={19} strokeWidth={2.4} />
           </span>
           <span>
-            shipper<span className="brand-dot">ex</span>
+            Shipper<span className="brand-dot">Ex</span>
           </span>
         </Link>
         <nav className="main-nav" aria-label="Main navigation">

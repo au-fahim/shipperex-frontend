@@ -343,7 +343,7 @@ export function AuthLayout({ children }: { children: React.ReactNode }) {
             <PackageOpen size={19} />
           </span>
           <span>
-            shipper<span className="brand-dot">ex</span>
+            Shipper<span className="brand-dot">Ex</span>
           </span>
         </Link>
         <Link href="/" className="auth-back">

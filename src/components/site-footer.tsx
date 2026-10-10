@@ -11,7 +11,7 @@ export function SiteFooter() {
               <PackageOpen size={18} />
             </span>
             <span>
-              shipper<span className="brand-dot">ex</span>
+              Shipper<span className="brand-dot">Ex</span>
             </span>
           </Link>
           <p>
