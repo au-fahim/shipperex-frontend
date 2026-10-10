@@ -2,14 +2,10 @@ import "server-only";
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import type { User } from "@/lib/backend";
+import { API_BASE_URL, type User } from "@/lib/backend";
 
 type WorkspaceRole = "customer" | "admin" | "manager" | "courier";
 type RolePayload = { data?: User };
-
-const apiBase = (
-  process.env.BACKEND_API_URL ?? "http://localhost:5000/api/v1"
-).replace(/\/$/, "");
 
 function homeFor(user: User) {
   if (user.role === "ADMIN") return "/admin";
@@ -38,7 +34,7 @@ export async function requireWorkspaceRole(expected: WorkspaceRole) {
 
   let response: Response;
   try {
-    response = await fetch(`${apiBase}/users/me`, {
+    response = await fetch(`${API_BASE_URL}/users/me`, {
       headers: { Authorization: `Bearer ${accessToken}` },
       cache: "no-store",
     });
@@ -67,7 +63,7 @@ export async function getSignedInHome() {
   const accessToken = jar.get("shipperex_access")?.value;
   if (!accessToken) return null;
   try {
-    const response = await fetch(`${apiBase}/users/me`, {
+    const response = await fetch(`${API_BASE_URL}/users/me`, {
       headers: { Authorization: `Bearer ${accessToken}` },
       cache: "no-store",
     });

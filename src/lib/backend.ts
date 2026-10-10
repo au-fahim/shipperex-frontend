@@ -1,7 +1,12 @@
 import { cookies } from "next/headers";
 
+const DEFAULT_API_BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://shipperex-backend.vercel.app/api/v1"
+    : "http://localhost:5000/api/v1";
+
 export const API_BASE_URL = (
-  process.env.BACKEND_API_URL ?? "http://localhost:5000/api/v1"
+  process.env.BACKEND_API_URL?.trim() || DEFAULT_API_BASE_URL
 ).replace(/\/$/, "");
 
 export type ApiEnvelope<T> = {

@@ -1,93 +1,133 @@
-# ShipperEx Frontend
+# ShipperEx
 
-ShipperEx is a responsive international shipping platform for booking and tracking document and parcel shipments. This Next.js frontend connects to the ShipperEx backend and provides separate workspaces for customers, managers, couriers, and administrators.
+**Send it. Follow it. Know where it is.** ShipperEx makes it easier to send documents and parcels, see the price before booking, pay online, and follow each delivery until it arrives. Customers and delivery teams can see the information and updates they need in one place.
 
-## Project links
+[Open ShipperEx](https://shipperex.vercel.app) · [API documentation](https://documenter.getpostman.com/view/54943329/2sBYAxQ9p9)
 
-- **Frontend repository:** [au-fahim/shipperex-frontend](https://github.com/au-fahim/shipperex-frontend)
-- **Backend repository:** [au-fahim/ShipperEx-backend](https://github.com/au-fahim/ShipperEx-backend)
-- **Live backend:** [shipperex-backend.vercel.app](https://shipperex-backend.vercel.app)
-- **API documentation:** [ShipperEx API on Postman](https://documenter.getpostman.com/view/54943329/2sBYAxQ9p9)
-- **Live frontend:** 
+Whether you are sending a package or coordinating deliveries, ShipperEx helps make each step clear—from creating a shipment to recording its delivery.
 
-## Workspaces and features
+## What you can do with ShipperEx
 
-- **Customer:** Create shipments, review quotes, track deliveries, view payment history and notifications, and manage a profile.
-- **Manager:** Review the shipment queue, assign couriers, update shipment checkpoints, and view reports.
-- **Courier:** View assigned pickup and delivery tasks, record task outcomes, and manage a profile.
-- **Admin:** Manage users and staff, hubs, countries, shipping rates, reports, and audit logs.
-- **Public:** Explore ShipperEx, register or sign in, and track a shipment by tracking number.
-- **Payments:** Start Stripe Checkout in test mode and verify its success or cancellation return through the backend.
+### 1. Book a document or parcel
 
-Workspace routes are protected and role-specific. The login page provides one-click demo sign-in buttons for the available roles.
+Enter where the shipment is going, who is sending and receiving it, and the package details. ShipperEx shows the delivery price before you confirm, so you can review the cost before placing your order.
 
-## Demo admin account
+### 2. Track it from pickup to delivery
 
-Use the following dedicated evaluation account on the login page:
+Enter your tracking number to see the latest shipment status and delivery updates. You can check progress without calling or guessing where your package is.
+
+### 3. Keep shipment details and updates together
+
+Customers can review their shipments, payments, and notifications in one place. Delivery teams can see assigned work and update shipment progress, helping everyone stay up to date.
+
+### Tools for delivery teams
+
+Managers can organize shipments, assign couriers, and record delivery progress. Couriers can view their assigned pickups and deliveries. Administrators can manage staff, delivery locations, shipping prices, and reports.
+
+Sign in to see the tools available for your role. The login page also offers demo sign-in shortcuts when the corresponding demo accounts are set up.
+
+## Try the live application
+
+- **Frontend:** [shipperex.vercel.app](https://shipperex.vercel.app)
+- **Backend:** [shipperex-backend.vercel.app](https://shipperex-backend.vercel.app)
+- **API reference:** [ShipperEx Postman documentation](https://documenter.getpostman.com/view/54943329/2sBYAxQ9p9)
+- **Frontend source:** [au-fahim/shipperex-frontend](https://github.com/au-fahim/shipperex-frontend)
+- **Backend source:** [au-fahim/ShipperEx-backend](https://github.com/au-fahim/ShipperEx-backend)
+
+### Demo administrator account
+
+Use this account to explore the administrator workspace. It must exist and be active in the backend database.
 
 | Email                 | Password      |
 | --------------------- | ------------- |
 | `admin@shipperex.com` | `Admin@12345` |
 
-The demo account must exist and be active in the connected backend seed data. Do not use personal credentials for evaluation.
-
-## Technology
-
-- Next.js App Router and TypeScript
-- Tailwind CSS v4, with the ShipperEx design system in global CSS
-- Radix UI Alert Dialog, Lucide React, and Sonner
-- TanStack Query for API data and caching
-- React Hook Form and Zod for form handling and validation
-- Recharts for dashboard visualizations
-- Same-origin Next.js route handlers for backend API and authentication requests
-
 ## Run locally
 
-Requirements: Node.js 20.9 or newer and pnpm.
+### Requirements
 
-1. Install the dependencies:
+- Node.js 20.9 or newer
+- pnpm 12.3.4 (the version recorded in `package.json`)
+- Access to the ShipperEx backend, either the live API or a local backend instance
+
+### Setup
+
+From the frontend project directory:
+
+1. Install dependencies from the lockfile:
 
    ```bash
    pnpm install
    ```
 
-2. Create the local environment file:
+2. Create your local environment file:
 
    ```powershell
    Copy-Item .env.example .env.local
    ```
 
-   On macOS or Linux, use `cp .env.example .env.local` instead. The example uses the deployed ShipperEx backend. To use a local B7A6 backend, set `BACKEND_API_URL=http://localhost:5000/api/v1`.
+   On macOS or Linux, use `cp .env.example .env.local`.
 
-3. Start the development server:
+3. Check `.env.local`. The example points to the live backend. To use a backend running locally, set:
+
+   ```dotenv
+   BACKEND_API_URL=http://localhost:5000
+   AUTH_COOKIE_SECURE=false
+   ```
+
+   For the deployed backend, use `https://shipperex-backend.vercel.app/api/v1`.
+
+4. Start the development server:
 
    ```bash
    pnpm dev
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000).
+5. Visit [http://localhost:3000](http://localhost:3000).
 
-The available project commands are:
+### Available commands
 
-```bash
-pnpm lint
-pnpm build
-pnpm start
-```
+| Command       | Purpose                                     |
+| ------------- | ------------------------------------------- |
+| `pnpm dev`    | Start the local development server          |
+| `pnpm lint`   | Lint the application and scripts with Biome |
+| `pnpm build`  | Create a production build                   |
+| `pnpm start`  | Serve the production build locally          |
+| `pnpm format` | Format source files and scripts with Biome  |
 
-## Environment variables
+## Configuration
 
-| Variable             | Local value                                                               | Production value                              |
-| -------------------- | ------------------------------------------------------------------------- | --------------------------------------------- |
-| `BACKEND_API_URL`    | `https://shipperex-backend.vercel.app/api/v1` (or your local backend URL) | `https://shipperex-backend.vercel.app/api/v1` |
-| `AUTH_COOKIE_SECURE` | `false`                                                                   | `true`                                        |
+The frontend uses server-side environment variables for its backend connection and authentication cookies. Do not add backend secrets or Stripe secret keys to this frontend repository.
 
-For Vercel, add both variables to the frontend project's production environment settings and redeploy. Keep backend secrets and Stripe secret keys on the backend; they do not belong in frontend environment variables.
+| Variable             | Local development                            | Production                                    |
+| -------------------- | -------------------------------------------- | --------------------------------------------- |
+| `BACKEND_API_URL`    | `http://localhost:5000`, or the live API URL | `https://shipperex-backend.vercel.app/api/v1` |
+| `AUTH_COOKIE_SECURE` | `false` for local HTTP                       | `true` for HTTPS                              |
 
-## API and authentication flow
+If `BACKEND_API_URL` is omitted, the application defaults to localhost during development and the live ShipperEx API in production. Set `BACKEND_API_URL` explicitly in the frontend hosting environment to make the target unambiguous. In Vercel, add it to the frontend project's Production environment and redeploy after changing it.
 
-The browser calls same-origin Next.js API routes. Those route handlers forward requests to `BACKEND_API_URL`; authentication tokens are held in HTTP-only cookies. Core account, shipment, operations, and payment data comes from the backend. The bundled country and city catalog is used to populate shipment location selectors.
+## How the application works
 
-## Stripe return URLs
+- The browser sends API requests to same-origin Next.js route handlers.
+- Those handlers forward requests to `BACKEND_API_URL`, keeping the backend origin out of browser-side API calls.
+- Access and refresh tokens are stored in HTTP-only cookies. The API proxy refreshes an expired access token when a valid refresh token is available.
+- Account, shipment, operations, and payment data are provided by the backend. The frontend includes a location catalog for shipment location selectors.
+- Stripe Checkout is created and verified by the backend. Configure the backend's `STRIPE_SUCCESS_URL` and `STRIPE_CANCEL_URL` to point to the frontend's `/payment/success` and `/payment/cancel` routes. For local development, those URLs are `http://localhost:3000/payment/success` and `http://localhost:3000/payment/cancel`.
 
-The backend owns Checkout creation and payment verification. After the frontend is deployed, configure the backend's `STRIPE_SUCCESS_URL` and `STRIPE_CANCEL_URL` values to the deployed frontend origin, ending in `/payment/success` and `/payment/cancel`. For local frontend work, use `http://localhost:3000/payment/success` and `http://localhost:3000/payment/cancel`. The frontend does not mark a payment as paid on its own.
+## Built with
+
+- Next.js App Router, React, and TypeScript
+- Tailwind CSS v4
+- TanStack Query for server data and caching
+- React Hook Form and Zod for forms and validation
+- Radix UI, Lucide React, and Sonner for interface components and feedback
+- Recharts for dashboard visualizations
+- Biome for linting and formatting
+
+## Project links
+
+- [Frontend repository](https://github.com/au-fahim/shipperex-frontend)
+- [Backend repository](https://github.com/au-fahim/ShipperEx-backend)
+- [Live frontend](https://shipperex.vercel.app)
+- [Live backend](https://shipperex-backend.vercel.app)
+- [API documentation](https://documenter.getpostman.com/view/54943329/2sBYAxQ9p9)
